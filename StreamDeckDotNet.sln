@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C8F635BF-B97
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDeck", "src\StreamDeck\StreamDeck.csproj", "{3A5A0F1D-6916-40FE-816F-A90E44DAB574}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FEAD6504-36AF-4624-9453-B5D54A42A351}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDeckCon", "samples\StreamDeckCon\StreamDeckCon.csproj", "{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +36,21 @@ Global
 		{3A5A0F1D-6916-40FE-816F-A90E44DAB574}.Release|x64.Build.0 = Release|Any CPU
 		{3A5A0F1D-6916-40FE-816F-A90E44DAB574}.Release|x86.ActiveCfg = Release|Any CPU
 		{3A5A0F1D-6916-40FE-816F-A90E44DAB574}.Release|x86.Build.0 = Release|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Debug|x64.Build.0 = Debug|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Debug|x86.Build.0 = Debug|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Release|x64.ActiveCfg = Release|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Release|x64.Build.0 = Release|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3A5A0F1D-6916-40FE-816F-A90E44DAB574} = {C8F635BF-B971-4A14-B617-4EF728FF13E9}
+		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3} = {FEAD6504-36AF-4624-9453-B5D54A42A351}
 	EndGlobalSection
 EndGlobal

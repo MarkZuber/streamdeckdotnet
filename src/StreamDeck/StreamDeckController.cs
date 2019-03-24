@@ -4,7 +4,6 @@
 using StreamDeck.Hid;
 using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,8 +11,8 @@ namespace StreamDeck
 {
     internal class StreamDeckController : IStreamDeckController
     {
-        private const ushort VendorId = 0x0fd9;
-        private const ushort ProductId = 0x0060;
+        internal const ushort VendorId = 0x0fd9;
+        internal const ushort ProductId = 0x0060;
 
         private const int PagePacketSize = 8191;
         private const int NumFirstPagePixels = 2583;
@@ -24,7 +23,7 @@ namespace StreamDeck
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private Task _readTask;
 
-        private StreamDeckController(HidDevice hidDevice)
+        internal StreamDeckController(HidDevice hidDevice)
         {
             _hidDevice = hidDevice;
         }
@@ -109,32 +108,6 @@ namespace StreamDeck
                 Array.Copy(buffer, retval, buffer.Length);
             }
             return retval;
-        }
-
-        public static IStreamDeckController Create(string path = null)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(path))
-                {
-                    var deviceInfo = HidFactory.GetHidDeviceInfos(VendorId, ProductId).FirstOrDefault();
-
-                    if (deviceInfo == null)
-                    {
-                        throw new StreamDeckException("No stream decks are connected");
-                    }
-
-                    path = deviceInfo.Path;
-                }
-
-                var streamDeck = new StreamDeckController(HidFactory.OpenHidDevice(path));
-                streamDeck.Start();
-                return streamDeck;
-            }
-            catch (HidException ex)
-            {
-                throw new StreamDeckException("Create failed", ex);
-            }
         }
 
         private int ValidateKeyIndex(int keyIndex)
@@ -291,11 +264,11 @@ namespace StreamDeck
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool _disposedValue = false; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
@@ -306,7 +279,7 @@ namespace StreamDeck
                     _hidDevice?.Dispose();
                 }
 
-                disposedValue = true;
+                _disposedValue = true;
             }
         }
 

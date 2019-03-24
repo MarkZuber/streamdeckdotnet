@@ -5,6 +5,7 @@
 **/TestResults/
 **/*.suo
 .DS_Store
+tools/
 
 # Created by https://www.gitignore.io/api/visualstudio
 
