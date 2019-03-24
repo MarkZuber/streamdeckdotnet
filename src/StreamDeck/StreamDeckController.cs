@@ -1,9 +1,13 @@
 ﻿// Copyright (c) Mark Zuber. All rights reserved.
 // Licensed under the MIT License.
 
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 using StreamDeck.Hid;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -148,6 +152,63 @@ namespace StreamDeck
             }
         }
 
+        public void SetImage(int keyIndex, string imageFilePath)
+        {
+            Image<Bgr24> image;
+
+            using (var stream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
+            {
+                image = Image.Load<Bgr24>(stream);
+                image.Mutate(x => x.Resize(IconSize, IconSize));
+            }
+
+            SetImageExact(keyIndex, image);
+        }
+
+        public void SetImageExact(int keyIndex, Image<Bgr24> image)
+        {
+            int key = ValidateKeyIndex(keyIndex);
+
+            if (image.Height == IconSize && image.Width == IconSize)
+            {
+                var page1Buf = new byte[NumFirstPagePixels * 3];
+                var page2Buf = new byte[NumSecondPagePixels * 3];
+
+                int pixelOffset = 0;
+                int bufOffset = 0;
+                for (; pixelOffset < NumFirstPagePixels; pixelOffset++)
+                {
+                    // reverse the image.
+                    int x = image.Width - 1 - (pixelOffset % image.Width);
+                    int y = pixelOffset / image.Width;
+                    Bgr24 pixel = image[x, y];
+                    page1Buf[bufOffset] = pixel.B;
+                    bufOffset++;
+                    page1Buf[bufOffset] = pixel.G;
+                    bufOffset++;
+                    page1Buf[bufOffset] = pixel.R;
+                    bufOffset++;
+                }
+
+                bufOffset = 0;
+                for (; pixelOffset - NumFirstPagePixels < NumSecondPagePixels; pixelOffset++)
+                {
+                    int x = image.Width - 1 - (pixelOffset % image.Width);
+                    int y = pixelOffset / image.Width;
+                    Bgr24 pixel = image[x, y];
+                    page2Buf[bufOffset] = pixel.B;
+                    bufOffset++;
+                    page2Buf[bufOffset] = pixel.G;
+                    bufOffset++;
+                    page2Buf[bufOffset] = pixel.R;
+                    bufOffset++;
+                }
+
+                WritePage1(key, page1Buf);
+                WritePage2(key, page2Buf);
+            }
+        }
+
         private byte[] CreateBuffer(int bufferLength, byte[] repeatedFillData)
         {
             var buf = new byte[bufferLength];
@@ -186,9 +247,9 @@ namespace StreamDeck
             SendFeatureReport(PadBufferToLength(brightnessCommandBuffer, 17));
         }
 
-        private void WritePage1(int keyIndex, byte[] buffer)
+        private byte[] GetPageOneHeader(int keyIndex)
         {
-            var header = new byte[]
+            return new byte[]
             {
                 0x02, 0x01, 0x01, 0x00, 0x00, Convert.ToByte(keyIndex + 1), 0x00, 0x00,
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -200,8 +261,20 @@ namespace StreamDeck
                 0x00, 0x00, 0xc4, 0x0e, 0x00, 0x00, 0x00, 0x00,
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
             };
+        }
 
-            Write(BuildPacket(header, buffer, PagePacketSize));
+        private byte[] GetPageTwoHeader(int keyIndex)
+        {
+            return new byte[]
+            {
+                0x02, 0x01, 0x02, 0x00, 0x01, Convert.ToByte(keyIndex + 1), 0x00, 0x00,
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+            };
+        }
+
+        private void WritePage1(int keyIndex, byte[] buffer)
+        {
+            Write(BuildPacket(GetPageOneHeader(keyIndex), buffer, PagePacketSize));
         }
 
         private byte[] BuildPacket(byte[] header, byte[] buffer, int paddedBufferLength)
@@ -214,13 +287,7 @@ namespace StreamDeck
 
         private void WritePage2(int keyIndex, byte[] buffer)
         {
-            var header = new byte[]
-            {
-                0x02, 0x01, 0x02, 0x00, 0x01, Convert.ToByte(keyIndex + 1), 0x00, 0x00,
-                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-            };
-
-            Write(BuildPacket(header, buffer, PagePacketSize));
+            Write(BuildPacket(GetPageTwoHeader(keyIndex), buffer, PagePacketSize));
         }
 
         private void Write(byte[] buffer)

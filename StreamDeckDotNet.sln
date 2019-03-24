@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28714.193
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C8F635BF-B971-4A14-B617-4EF728FF13E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDeck", "src\StreamDeck\StreamDeck.csproj", "{3A5A0F1D-6916-40FE-816F-A90E44DAB574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamDeck", "src\StreamDeck\StreamDeck.csproj", "{3A5A0F1D-6916-40FE-816F-A90E44DAB574}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FEAD6504-36AF-4624-9453-B5D54A42A351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDeckCon", "samples\StreamDeckCon\StreamDeckCon.csproj", "{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamDeckCon", "samples\StreamDeckCon\StreamDeckCon.csproj", "{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3A5A0F1D-6916-40FE-816F-A90E44DAB574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,8 +46,14 @@ Global
 		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Release|x86.ActiveCfg = Release|Any CPU
 		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3A5A0F1D-6916-40FE-816F-A90E44DAB574} = {C8F635BF-B971-4A14-B617-4EF728FF13E9}
 		{7F4E320F-E0DF-42F7-B30D-5EB2DF66B8C3} = {FEAD6504-36AF-4624-9453-B5D54A42A351}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFD512CD-A0ED-4383-A16B-3CE8F65D022C}
 	EndGlobalSection
 EndGlobal

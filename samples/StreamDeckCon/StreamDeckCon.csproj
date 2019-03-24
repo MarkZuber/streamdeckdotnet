@@ -6,7 +6,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0006" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\src\StreamDeck\StreamDeck.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="hellothere.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="smiles.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

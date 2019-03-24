@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 
 using System;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace StreamDeck
 {
@@ -21,5 +23,8 @@ namespace StreamDeck
         void FillColor(int keyIndex, byte r, byte g, byte b);
         void Reset();
         void SetBrightness(int percentage);
+
+        void SetImage(int keyIndex, string imageFilePath);
+        void SetImageExact(int keyIndex, Image<Bgr24> image);
     }
 }

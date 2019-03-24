@@ -10,10 +10,11 @@
     <Copyright>(c) Mark Zuber</Copyright>
     <Description>Elgato StreamDeck controller for .NET</Description>
     <PackageTags>dotnet elgato streamdeck</PackageTags>
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>false</DelaySign>
-    <AssemblyOriginatorKeyFile>StreamDeck.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0006" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE">
