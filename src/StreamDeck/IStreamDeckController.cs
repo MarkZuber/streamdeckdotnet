@@ -5,7 +5,7 @@ using System;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace StreamDeck
+namespace Zube.StreamDeck
 {
     public interface IStreamDeckController : IDisposable
     {

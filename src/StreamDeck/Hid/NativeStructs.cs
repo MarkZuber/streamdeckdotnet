@@ -4,7 +4,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace StreamDeck.Hid
+namespace Zube.StreamDeck.Hid
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     internal struct HidDeviceInfoStruct

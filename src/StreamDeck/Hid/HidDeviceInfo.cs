@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Mark Zuber. All rights reserved.
 // Licensed under the MIT License.
 
-namespace StreamDeck.Hid
+namespace Zube.StreamDeck.Hid
 {
     internal class HidDeviceInfo
     {

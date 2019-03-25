@@ -4,7 +4,7 @@
 using System.Linq;
 using StreamDeck.Hid;
 
-namespace StreamDeck
+namespace Zube.StreamDeck
 {
     public static class StreamDeckFactory
     {

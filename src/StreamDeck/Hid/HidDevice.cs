@@ -4,7 +4,7 @@
 using System;
 using System.Text;
 
-namespace StreamDeck.Hid
+namespace Zube.StreamDeck.Hid
 {
     internal class HidDevice : IDisposable
     {

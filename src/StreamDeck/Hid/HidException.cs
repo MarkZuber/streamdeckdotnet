@@ -3,7 +3,7 @@
 
 using System;
 
-namespace StreamDeck.Hid
+namespace Zube.StreamDeck.Hid
 {
     internal class HidException : Exception
     {

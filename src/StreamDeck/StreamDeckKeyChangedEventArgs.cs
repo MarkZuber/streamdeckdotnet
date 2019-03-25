@@ -3,7 +3,7 @@
 
 using System;
 
-namespace StreamDeck
+namespace Zube.StreamDeck
 {
     public class StreamDeckKeyChangedEventArgs : EventArgs
     {

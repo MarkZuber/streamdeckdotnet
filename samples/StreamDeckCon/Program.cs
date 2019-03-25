@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
-using StreamDeck;
+using Zube.StreamDeck;
 
 namespace StreamDeckCon
 {
