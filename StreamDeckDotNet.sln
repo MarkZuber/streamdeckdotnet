@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28714.193
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C8F635BF-B971-4A14-B617-4EF728FF13E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamDeck", "src\StreamDeck\StreamDeck.csproj", "{3A5A0F1D-6916-40FE-816F-A90E44DAB574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zube.StreamDeck", "src\StreamDeck\Zube.StreamDeck.csproj", "{3A5A0F1D-6916-40FE-816F-A90E44DAB574}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FEAD6504-36AF-4624-9453-B5D54A42A351}"
 EndProject

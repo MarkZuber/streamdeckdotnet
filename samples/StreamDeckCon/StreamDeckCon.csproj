@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\StreamDeck\StreamDeck.csproj" />
+    <ProjectReference Include="..\..\src\StreamDeck\Zube.StreamDeck.csproj" />
   </ItemGroup>
 
   <ItemGroup>

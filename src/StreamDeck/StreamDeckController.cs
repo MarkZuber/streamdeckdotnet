@@ -4,12 +4,12 @@
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
-using StreamDeck.Hid;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Zube.StreamDeck.Hid;
 
 namespace Zube.StreamDeck
 {

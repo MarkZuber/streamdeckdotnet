@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 using System.Linq;
-using StreamDeck.Hid;
+using Zube.StreamDeck.Hid;
 
 namespace Zube.StreamDeck
 {
