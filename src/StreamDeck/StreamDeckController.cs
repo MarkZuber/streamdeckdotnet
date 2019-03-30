@@ -152,17 +152,19 @@ namespace Zube.StreamDeck
             }
         }
 
+        public void SetImage(int keyIndex, Stream imageStream)
+        {
+            Image<Bgr24> image = Image.Load<Bgr24>(imageStream);
+            image.Mutate(x => x.Resize(IconSize, IconSize));
+            SetImageExact(keyIndex, image);
+        }
+
         public void SetImage(int keyIndex, string imageFilePath)
         {
-            Image<Bgr24> image;
-
             using (var stream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
             {
-                image = Image.Load<Bgr24>(stream);
-                image.Mutate(x => x.Resize(IconSize, IconSize));
+                SetImage(keyIndex, stream);
             }
-
-            SetImageExact(keyIndex, image);
         }
 
         public void SetImageExact(int keyIndex, Image<Bgr24> image)

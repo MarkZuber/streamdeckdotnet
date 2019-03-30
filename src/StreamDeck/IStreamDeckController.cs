@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.IO;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -24,6 +25,7 @@ namespace Zube.StreamDeck
         void Reset();
         void SetBrightness(int percentage);
 
+        void SetImage(int keyIndex, Stream imageStream);
         void SetImage(int keyIndex, string imageFilePath);
         void SetImageExact(int keyIndex, Image<Bgr24> image);
     }
