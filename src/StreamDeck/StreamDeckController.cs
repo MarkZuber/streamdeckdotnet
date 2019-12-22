@@ -39,18 +39,26 @@ namespace Zube.StreamDeck
                 byte[] lastKeyStates = new byte[NumKeys + 1];
                 while (!_cancellationTokenSource.IsCancellationRequested)
                 {
-                    var keyStates = ReadKeyStates();
-                    if (keyStates != null && keyStates.Length > 0)
+                    try
                     {
-                        for (int keyIdx = 1; keyIdx <= NumKeys; keyIdx++)
-                        {
-                            if (keyStates[keyIdx] != lastKeyStates[keyIdx])
-                            {
-                                KeyPressed?.Invoke(this, new StreamDeckKeyChangedEventArgs(ConvertKeyIndex(keyIdx - 1), keyStates[keyIdx] > 0));
-                            }
-                        }
 
-                        lastKeyStates = keyStates;
+                        var keyStates = ReadKeyStates();
+                        if (keyStates != null && keyStates.Length > 0)
+                        {
+                            for (int keyIdx = 1; keyIdx <= NumKeys; keyIdx++)
+                            {
+                                if (keyStates[keyIdx] != lastKeyStates[keyIdx])
+                                {
+                                    KeyPressed?.Invoke(this, new StreamDeckKeyChangedEventArgs(ConvertKeyIndex(keyIdx - 1), keyStates[keyIdx] > 0));
+                                }
+                            }
+
+                            lastKeyStates = keyStates;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.TraceError($"ReadThreadProc had failure: {ex}");
                     }
                 }
             }
